@@ -1,0 +1,70 @@
+{% extends 'templateLogin.html.twig' %}
+
+{% block body %}
+
+
+
+
+<div style="margin-top:10%"></div>
+
+
+
+
+<div class="login-box">
+  <div class="login-logo">
+    <a href="{{ path('login') }}"><b>Tigo</b>Trainers</a>
+  </div><!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Iniciar sesion</p>
+
+        <form class="form-horizontal" action="{{ path('login') }}" method="post">
+
+                    <div class="form-group has-feedback">
+                        <label for="username">Usuario:</label>
+                        <input class="form-control" placeholder="Usuario" type="text" id="username" name="_username" value="{{ last_username }}" />
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="password">Clave:</label>
+                        <input class="form-control" placeholder="Clave" type="password" id="password" name="_password" />
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">    
+                             <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox"> Recuerdame
+                                 </label>
+                            </div>                        
+                        </div><!-- /.col -->
+
+                        <div class="col-xs-4">
+                          <button type="submit" class="btn btn-primary btn-block btn-flat">Acceder</button>
+                        </div><!-- /.col -->
+                    </div>
+                    <div id="mensaje" class="alert alert-warning" style="display: none;"></div>
+                    <input type="hidden" name="_target_path" value="dashboard" />
+        </form>
+    </div>
+
+        {% if error %}
+    <div class="alert alert-danger fade in">
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+    {% endif %}
+</div>
+
+
+
+<div style="margin-top:10%"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+    $("#formulario li").attr("class","alert alert-danger")
+</script>
+{% endblock %}

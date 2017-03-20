@@ -3,6 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * SmbdEtlExtract
@@ -10,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="smbd_etl_extract")
  * @ORM\Entity
  */
-class SmbdEtlExtract
+class SmbdEtlExtract implements UserInterface, \Serializable
 {
     /**
      * @var string
@@ -528,4 +532,58 @@ class SmbdEtlExtract
     {
         return $this->cedula;
     }
+
+
+
+
+
+
+
+    public function getUsername()
+    {
+        return $this->cedula;
+    }
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function getPassword()
+    {
+        return $this->cedula;
+    }
+
+    public function getRoles()
+    {
+        return array($this->cargo);
+    }
+
+public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->cedula,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->cedula,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }
+
+
+
 }
