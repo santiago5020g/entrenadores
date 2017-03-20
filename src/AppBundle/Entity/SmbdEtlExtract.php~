@@ -1,0 +1,138 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SmbdEtlExtract
+ *
+ * @ORM\Table(name="smbd_etl_extract")
+ * @ORM\Entity
+ */
+class SmbdEtlExtract
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombres", type="string", length=190, nullable=true)
+     */
+    private $nombres;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=190, nullable=true)
+     */
+    private $apellidos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cargo", type="string", length=190, nullable=true)
+     */
+    private $cargo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="canal", type="string", length=190, nullable=true)
+     */
+    private $canal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gerencia", type="string", length=190, nullable=true)
+     */
+    private $gerencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=190, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bu", type="string", length=190, nullable=true)
+     */
+    private $bu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vp", type="string", length=190, nullable=true)
+     */
+    private $vp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="proveedor", type="string", length=190, nullable=true)
+     */
+    private $proveedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fecha_contratacion", type="string", length=190, nullable=true)
+     */
+    private $fechaContratacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ciudad", type="string", length=190, nullable=true)
+     */
+    private $ciudad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="depto", type="string", length=190, nullable=true)
+     */
+    private $depto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=190, nullable=true)
+     */
+    private $region;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pais", type="string", length=190, nullable=true)
+     */
+    private $pais;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fuente", type="string", length=190, nullable=true)
+     */
+    private $fuente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cedula", type="string", length=190)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $cedula;
+
+
+}
+
