@@ -140,6 +140,15 @@ class SmbdEtlExtract implements UserInterface, \Serializable
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="ttrformSmbdextract", inversedBy="SmbdEtlExtract")
+     * @ORM\JoinColumn(name="SmbdEtlExtract_id", referencedColumnName="idsmbdextract")
+     */
+    private $ttrformSmbdextract;
+
+
+
+
+    /**
      * Set nombres
      *
      * @param string $nombres
