@@ -24,25 +24,11 @@ class Ttrform
     /**
      * @var string
      *
-<<<<<<< HEAD
-     * @ORM\Column(name="name", type="string", length=100)
-=======
      * @ORM\Column(name="name", type="string", length=50)
->>>>>>> temp
      */
     private $name;
 
     /**
-<<<<<<< HEAD
-     * @var int
-     *
-     * @ORM\Column(name="iduser", type="integer")
-     */
-    private $iduser;
-
-    /**
-=======
->>>>>>> temp
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -64,8 +50,6 @@ class Ttrform
     private $active;
 
 
-<<<<<<< HEAD
-=======
 
     /**
      * Many Users have Many Groups.
@@ -80,7 +64,6 @@ class Ttrform
 
 
 
->>>>>>> temp
     /**
      * Get id
      *
@@ -116,33 +99,6 @@ class Ttrform
     }
 
     /**
-<<<<<<< HEAD
-     * Set iduser
-     *
-     * @param integer $iduser
-     *
-     * @return Ttrform
-     */
-    public function setIduser($iduser)
-    {
-        $this->iduser = $iduser;
-
-        return $this;
-    }
-
-    /**
-     * Get iduser
-     *
-     * @return int
-     */
-    public function getIduser()
-    {
-        return $this->iduser;
-    }
-
-    /**
-=======
->>>>>>> temp
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -213,51 +169,5 @@ class Ttrform
     {
         return $this->active;
     }
-<<<<<<< HEAD
+
 }
-
-=======
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cargos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add cargo
-     *
-     * @param \AppBundle\Entity\Cargo $cargo
-     *
-     * @return Ttrform
-     */
-    public function addCargo(\AppBundle\Entity\Cargo $cargo)
-    {
-        $this->cargos[] = $cargo;
-
-        return $this;
-    }
-
-    /**
-     * Remove cargo
-     *
-     * @param \AppBundle\Entity\Cargo $cargo
-     */
-    public function removeCargo(\AppBundle\Entity\Cargo $cargo)
-    {
-        $this->cargos->removeElement($cargo);
-    }
-
-    /**
-     * Get cargos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCargos()
-    {
-        return $this->cargos;
-    }
-}
->>>>>>> temp
