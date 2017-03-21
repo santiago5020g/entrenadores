@@ -24,25 +24,11 @@ class Ttrform
     /**
      * @var string
      *
-
-     * @ORM\Column(name="name", type="string", length=100)
-
      * @ORM\Column(name="name", type="string", length=50)
-
      */
     private $name;
 
     /**
-
-     * @var int
-     *
-     * @ORM\Column(name="iduser", type="integer")
-     */
-    private $iduser;
-
-    /**
-
-
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -65,7 +51,6 @@ class Ttrform
 
 
 
-
     /**
      * Many Users have Many Groups.
      * @ORM\ManyToMany(targetEntity="Cargo")
@@ -75,7 +60,6 @@ class Ttrform
      *      )
      */
     private $cargos;
-
 
 
 
@@ -115,32 +99,6 @@ class Ttrform
     }
 
     /**
-
-     * Set iduser
-     *
-     * @param integer $iduser
-     *
-     * @return Ttrform
-     */
-    public function setIduser($iduser)
-    {
-        $this->iduser = $iduser;
-
-        return $this;
-    }
-
-    /**
-     * Get iduser
-     *
-     * @return int
-     */
-    public function getIduser()
-    {
-        return $this->iduser;
-    }
-
-    /**
-
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -212,10 +170,6 @@ class Ttrform
         return $this->active;
     }
 
-}
-
-
-
     /**
      * Constructor
      */
@@ -258,4 +212,3 @@ class Ttrform
         return $this->cargos;
     }
 }
-
