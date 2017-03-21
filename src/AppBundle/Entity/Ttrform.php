@@ -24,16 +24,16 @@ class Ttrform
     /**
      * @var string
      *
-<<<<<<< HEAD
+
      * @ORM\Column(name="name", type="string", length=100)
-=======
+
      * @ORM\Column(name="name", type="string", length=50)
->>>>>>> temp
+
      */
     private $name;
 
     /**
-<<<<<<< HEAD
+
      * @var int
      *
      * @ORM\Column(name="iduser", type="integer")
@@ -41,8 +41,8 @@ class Ttrform
     private $iduser;
 
     /**
-=======
->>>>>>> temp
+
+
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -64,8 +64,7 @@ class Ttrform
     private $active;
 
 
-<<<<<<< HEAD
-=======
+
 
     /**
      * Many Users have Many Groups.
@@ -80,7 +79,7 @@ class Ttrform
 
 
 
->>>>>>> temp
+
     /**
      * Get id
      *
@@ -116,7 +115,7 @@ class Ttrform
     }
 
     /**
-<<<<<<< HEAD
+
      * Set iduser
      *
      * @param integer $iduser
@@ -141,8 +140,7 @@ class Ttrform
     }
 
     /**
-=======
->>>>>>> temp
+
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -213,10 +211,10 @@ class Ttrform
     {
         return $this->active;
     }
-<<<<<<< HEAD
+
 }
 
-=======
+
 
     /**
      * Constructor
@@ -260,4 +258,4 @@ class Ttrform
         return $this->cargos;
     }
 }
->>>>>>> temp
+
