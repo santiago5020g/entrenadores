@@ -1,0 +1,128 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Configfield
+ *
+ * @ORM\Table(name="configfield")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ConfigfieldRepository")
+ */
+class Configfield
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="required", type="boolean")
+     */
+    private $required;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="maxlenght", type="string", length=10)
+     */
+    private $maxlenght;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="minlenght", type="string", length=10)
+     */
+    private $minlenght;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set required
+     *
+     * @param boolean $required
+     *
+     * @return Configfield
+     */
+    public function setRequired($required)
+    {
+        $this->required = $required;
+
+        return $this;
+    }
+
+    /**
+     * Get required
+     *
+     * @return bool
+     */
+    public function getRequired()
+    {
+        return $this->required;
+    }
+
+    /**
+     * Set maxlenght
+     *
+     * @param string $maxlenght
+     *
+     * @return Configfield
+     */
+    public function setMaxlenght($maxlenght)
+    {
+        $this->maxlenght = $maxlenght;
+
+        return $this;
+    }
+
+    /**
+     * Get maxlenght
+     *
+     * @return string
+     */
+    public function getMaxlenght()
+    {
+        return $this->maxlenght;
+    }
+
+    /**
+     * Set minlenght
+     *
+     * @param string $minlenght
+     *
+     * @return Configfield
+     */
+    public function setMinlenght($minlenght)
+    {
+        $this->minlenght = $minlenght;
+
+        return $this;
+    }
+
+    /**
+     * Get minlenght
+     *
+     * @return string
+     */
+    public function getMinlenght()
+    {
+        return $this->minlenght;
+    }
+}
+
