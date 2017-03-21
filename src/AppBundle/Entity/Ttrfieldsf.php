@@ -47,7 +47,7 @@ class Ttrfieldsf
 
     /**
      * @ORM\ManyToOne(targetEntity="Ttrform", inversedBy="ttrfieldsf")
-     * @ORM\JoinColumn(name="ttrfield_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="ttrfield_id", referencedColumnName="id", nullable=false)
      */
     private $ttrform;
 

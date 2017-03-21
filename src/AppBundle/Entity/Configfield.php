@@ -47,7 +47,7 @@ class Configfield
     /**
      * One configfield has One ttrfield.
      * @ORM\OneToOne(targetEntity="Ttrfieldsf", inversedBy="configfield")
-     * @ORM\JoinColumn(name="ttrfield_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="ttrfield_id", referencedColumnName="id", nullable=false)
      */
     private $ttrfieldsf;
 

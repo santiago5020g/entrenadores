@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -136,6 +137,23 @@ class SmbdEtlExtract implements UserInterface, \Serializable
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $cedula;
+
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ttrform", mappedBy="smbdEtlExtract")
+     */
+    private $ttrforms;
+
+    public function __construct()
+    {
+        $this->ttrforms = new ArrayCollection();
+    }
+
+
+
+
 
 
 
@@ -588,27 +606,38 @@ public function eraseCredentials()
 
 
 
+
     /**
-     * Set ttrformSmbdextract
+     * Add ttrform
      *
-     * @param \AppBundle\Entity\ttrformSmbdextract $ttrformSmbdextract
+     * @param \AppBundle\Entity\Ttrform $ttrform
      *
      * @return SmbdEtlExtract
      */
-    public function setTtrformSmbdextract(\AppBundle\Entity\ttrformSmbdextract $ttrformSmbdextract = null)
+    public function addTtrform(\AppBundle\Entity\Ttrform $ttrform)
     {
-        $this->ttrformSmbdextract = $ttrformSmbdextract;
+        $this->ttrforms[] = $ttrform;
 
         return $this;
     }
 
     /**
-     * Get ttrformSmbdextract
+     * Remove ttrform
      *
-     * @return \AppBundle\Entity\ttrformSmbdextract
+     * @param \AppBundle\Entity\Ttrform $ttrform
      */
-    public function getTtrformSmbdextract()
+    public function removeTtrform(\AppBundle\Entity\Ttrform $ttrform)
     {
-        return $this->ttrformSmbdextract;
+        $this->ttrforms->removeElement($ttrform);
+    }
+
+    /**
+     * Get ttrforms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTtrforms()
+    {
+        return $this->ttrforms;
     }
 }

@@ -72,6 +72,13 @@ class Ttrform
 
 
 
+    /**
+     * @ORM\ManyToOne(targetEntity="SmbdEtlExtract", inversedBy="ttrforms")
+     * @ORM\JoinColumn(name="smbdEtlExtract_cedula", referencedColumnName="cedula", nullable=false)
+     */
+    private $smbdEtlExtract;
+
+
 
 
 
@@ -224,6 +231,8 @@ class Ttrform
         return $this->cargos;
     }
 
+
+
     /**
      * Add ttrfieldsf
      *
@@ -256,5 +265,29 @@ class Ttrform
     public function getTtrfieldsf()
     {
         return $this->ttrfieldsf;
+    }
+
+    /**
+     * Set smbdEtlExtract
+     *
+     * @param \AppBundle\Entity\SmbdEtlExtract $smbdEtlExtract
+     *
+     * @return Ttrform
+     */
+    public function setSmbdEtlExtract(\AppBundle\Entity\SmbdEtlExtract $smbdEtlExtract)
+    {
+        $this->smbdEtlExtract = $smbdEtlExtract;
+
+        return $this;
+    }
+
+    /**
+     * Get smbdEtlExtract
+     *
+     * @return \AppBundle\Entity\SmbdEtlExtract
+     */
+    public function getSmbdEtlExtract()
+    {
+        return $this->smbdEtlExtract;
     }
 }

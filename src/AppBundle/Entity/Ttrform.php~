@@ -72,6 +72,13 @@ class Ttrform
 
 
 
+    /**
+     * @ORM\ManyToOne(targetEntity="SmbdEtlExtract", inversedBy="ttrforms")
+     * @ORM\JoinColumn(name="smbdEtlExtract_cedula", referencedColumnName="cedula", nullable=false)
+     */
+    private $smbdEtlExtract;
+
+
 
 
 
@@ -223,4 +230,6 @@ class Ttrform
     {
         return $this->cargos;
     }
+
+
 }
