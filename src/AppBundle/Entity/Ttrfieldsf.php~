@@ -144,52 +144,5 @@ class Ttrfieldsf
     {
         return $this->active;
     }
-
-    /**
-     * Set ttrform
-     *
-     * @param \AppBundle\Entity\Ttrform $ttrform
-     *
-     * @return Ttrfieldsf
-     */
-    public function setTtrform(\AppBundle\Entity\Ttrform $ttrform = null)
-    {
-        $this->ttrform = $ttrform;
-
-        return $this;
-    }
-
-    /**
-     * Get ttrform
-     *
-     * @return \AppBundle\Entity\Ttrform
-     */
-    public function getTtrform()
-    {
-        return $this->ttrform;
-    }
-
-    /**
-     * Set configfield
-     *
-     * @param \AppBundle\Entity\Configfield $configfield
-     *
-     * @return Ttrfieldsf
-     */
-    public function setConfigfield(\AppBundle\Entity\Configfield $configfield = null)
-    {
-        $this->configfield = $configfield;
-
-        return $this;
-    }
-
-    /**
-     * Get configfield
-     *
-     * @return \AppBundle\Entity\Configfield
-     */
-    public function getConfigfield()
-    {
-        return $this->configfield;
-    }
 }
+

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Ttrform
@@ -60,6 +61,16 @@ class Ttrform
      *      )
      */
     private $cargos;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ttrfieldsf", mappedBy="ttrform")
+     */
+    private $ttrfieldsf;
+
+
+
 
 
 
@@ -176,6 +187,7 @@ class Ttrform
     public function __construct()
     {
         $this->cargos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ttrfieldsf = new ArrayCollection();
     }
 
     /**
@@ -210,5 +222,39 @@ class Ttrform
     public function getCargos()
     {
         return $this->cargos;
+    }
+
+    /**
+     * Add ttrfieldsf
+     *
+     * @param \AppBundle\Entity\Ttrfieldsf $ttrfieldsf
+     *
+     * @return Ttrform
+     */
+    public function addTtrfieldsf(\AppBundle\Entity\Ttrfieldsf $ttrfieldsf)
+    {
+        $this->ttrfieldsf[] = $ttrfieldsf;
+
+        return $this;
+    }
+
+    /**
+     * Remove ttrfieldsf
+     *
+     * @param \AppBundle\Entity\Ttrfieldsf $ttrfieldsf
+     */
+    public function removeTtrfieldsf(\AppBundle\Entity\Ttrfieldsf $ttrfieldsf)
+    {
+        $this->ttrfieldsf->removeElement($ttrfieldsf);
+    }
+
+    /**
+     * Get ttrfieldsf
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTtrfieldsf()
+    {
+        return $this->ttrfieldsf;
     }
 }

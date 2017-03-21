@@ -72,4 +72,45 @@ class Cargo
 
 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ttrforms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add ttrform
+     *
+     * @param \AppBundle\Entity\Ttrform $ttrform
+     *
+     * @return Cargo
+     */
+    public function addTtrform(\AppBundle\Entity\Ttrform $ttrform)
+    {
+        $this->ttrforms[] = $ttrform;
+
+        return $this;
+    }
+
+    /**
+     * Remove ttrform
+     *
+     * @param \AppBundle\Entity\Ttrform $ttrform
+     */
+    public function removeTtrform(\AppBundle\Entity\Ttrform $ttrform)
+    {
+        $this->ttrforms->removeElement($ttrform);
+    }
+
+    /**
+     * Get ttrforms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTtrforms()
+    {
+        return $this->ttrforms;
+    }
 }

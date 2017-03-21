@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Ttrform
@@ -60,6 +61,16 @@ class Ttrform
      *      )
      */
     private $cargos;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ttrfieldsf", mappedBy="ttrform")
+     */
+    private $ttrfieldsf;
+
+
+
 
 
 
@@ -170,4 +181,46 @@ class Ttrform
         return $this->active;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cargos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ttrfieldsf = new ArrayCollection();
+    }
+
+    /**
+     * Add cargo
+     *
+     * @param \AppBundle\Entity\Cargo $cargo
+     *
+     * @return Ttrform
+     */
+    public function addCargo(\AppBundle\Entity\Cargo $cargo)
+    {
+        $this->cargos[] = $cargo;
+
+        return $this;
+    }
+
+    /**
+     * Remove cargo
+     *
+     * @param \AppBundle\Entity\Cargo $cargo
+     */
+    public function removeCargo(\AppBundle\Entity\Cargo $cargo)
+    {
+        $this->cargos->removeElement($cargo);
+    }
+
+    /**
+     * Get cargos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCargos()
+    {
+        return $this->cargos;
+    }
 }

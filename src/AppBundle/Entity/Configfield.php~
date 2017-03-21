@@ -135,28 +135,5 @@ class Configfield
     {
         return $this->minlenght;
     }
-
-    /**
-     * Set ttrfieldsf
-     *
-     * @param \AppBundle\Entity\Ttrfieldsf $ttrfieldsf
-     *
-     * @return Configfield
-     */
-    public function setTtrfieldsf(\AppBundle\Entity\Ttrfieldsf $ttrfieldsf = null)
-    {
-        $this->ttrfieldsf = $ttrfieldsf;
-
-        return $this;
-    }
-
-    /**
-     * Get ttrfieldsf
-     *
-     * @return \AppBundle\Entity\Ttrfieldsf
-     */
-    public function getTtrfieldsf()
-    {
-        return $this->ttrfieldsf;
-    }
 }
+
