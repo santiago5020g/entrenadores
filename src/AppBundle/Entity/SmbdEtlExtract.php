@@ -139,14 +139,6 @@ class SmbdEtlExtract implements UserInterface, \Serializable
 
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="ttrformSmbdextract", inversedBy="SmbdEtlExtract")
-     * @ORM\JoinColumn(name="SmbdEtlExtract_id", referencedColumnName="idsmbdextract")
-     */
-    private $ttrformSmbdextract;
-
-
-
 
     /**
      * Set nombres
@@ -595,4 +587,28 @@ public function eraseCredentials()
 
 
 
+
+    /**
+     * Set ttrformSmbdextract
+     *
+     * @param \AppBundle\Entity\ttrformSmbdextract $ttrformSmbdextract
+     *
+     * @return SmbdEtlExtract
+     */
+    public function setTtrformSmbdextract(\AppBundle\Entity\ttrformSmbdextract $ttrformSmbdextract = null)
+    {
+        $this->ttrformSmbdextract = $ttrformSmbdextract;
+
+        return $this;
+    }
+
+    /**
+     * Get ttrformSmbdextract
+     *
+     * @return \AppBundle\Entity\ttrformSmbdextract
+     */
+    public function getTtrformSmbdextract()
+    {
+        return $this->ttrformSmbdextract;
+    }
 }
