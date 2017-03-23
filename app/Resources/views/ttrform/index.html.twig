@@ -5,7 +5,6 @@
 <div class="container">
     
 
-
     <div class="row">
         <div class="col-md-12">
             <a class="btn btn-success" href="">Crear un nuevo formulario</a>
@@ -35,8 +34,8 @@
         {% for form in forms %}
             <tr>
                 <td>{{ form.name }}</td>
-                <td>{{ customer.created_at|date("m/d/Y") }}</td>
-                <td>{{ customer.modified_at|date("m/d/Y") }}</td>
+                <td>{{ form.createdAt |date("m/d/Y") }}</td>
+                <td>{{ form.modifiedAt |date("m/d/Y") }}</td>
                 <td>{% if form.active %}Si{% else %}No{% endif %}</td>
                 <td>
                     <a class='btn btn-warning' href="#">Editar</a>

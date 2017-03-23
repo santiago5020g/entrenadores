@@ -200,6 +200,8 @@ class Ttrform
     {
         $this->cargos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ttrfieldsf = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->modifiedAt = new \DateTime();
     }
 
     /**

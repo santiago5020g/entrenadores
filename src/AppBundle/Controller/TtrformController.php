@@ -42,9 +42,9 @@ class TtrformController extends Controller
 
     /**
      * @Route("/nuevo_formulario", name="new_form")
-     * @Method({"GET"})
+     * @Method({"GET", "POST"})
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         //Si el usuario no esta logueado con cargo entrenador comercial
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_ENTRENADOR COMERCIAL')) 
@@ -54,44 +54,47 @@ class TtrformController extends Controller
             return new Response("sin permiso");
         }
 
-        //esta variable se usa en el post al enviar el formulario. en new2Action. 
-        return $this->render('ttrform/new.html.twig');
-    }
-
-
-
-    /**
-     * @Route(false, name="new_form_post")
-     * @Method({"POST"})
-     */
-    public function new2Action(Request $request)
-    {
-        //Si el usuario no esta logueado con cargo entrenador comercial
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ENTRENADOR COMERCIAL')) 
-        {
-           
-            //return $this->render('denegado.html.twig',array('aa'=>$aa));
-            return new Response("sin permiso");
-        }
-
-         // $_POST parameters
-        //se capturan los campos del formulario
         $ttrform = new Ttrform();
-        //obtener los parametros POST
-        $ttrform->setName($request->request->get("nombre"));
-        $ttrform->setActive($request->request->get("activo"));
-        //incluir el validador
-        $validator = $this->get('validator');
-        //validar el formulario
-        $errors = $validator->validate($ttrform);
+        //importar el formulario que esta en appbundle/form/ttrformtype
+        $form = $this->createForm('AppBundle\Form\TtrformType', $ttrform);
+        //si se envia el formulario se capturan los datos
+        $form->handleRequest($request);
 
-        if (count($errors) > 0) {
-            return $this->render('ttrform/new.html.twig');
+
+        //si el formulario es enviado y es valido
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $em = $this->getDoctrine()->getManager();
+            //seleccionar cedula del usuario logueado
+            $cedula = $this->get('security.token_storage')->getToken()->getUser();
+            //traer el objeto usuario que crea el formulario
+            $smbdEtlExtract = $em->getRepository('AppBundle:SmbdEtlExtract')->find($cedula);
+            //insertar el objeto smbdEtlExtract en ttrform
+            $ttrform->setSmbdEtlExtract($smbdEtlExtract);
+            //con estas dos lineas se guarda el formulario en la bd
+            $em->persist($ttrform);
+            $em->flush($ttrform);
+
+
+            //si ya esta aqui es porque los datos se insertaron correctamente
+            $this->addFlash(
+            'mensaje',
+            'Usuario creado correctamente'
+            );
+
+            return $this->redirectToRoute('index_form');
+
+
         }
 
-        return new Response("guarda");
-    
+
+
+        //redenderizar y luego crear la vista formulario
+        return $this->render('ttrform/new.html.twig',array(
+            'form' => $form->createView(),)
+        );
     }
+
 
 
 }

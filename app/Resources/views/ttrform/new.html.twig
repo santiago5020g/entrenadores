@@ -7,30 +7,26 @@
 
 
 
+{% for flashMessage in app.session.flashBag.get('errors') %}
+    <div class="alert alert-danger">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
 
-    <form class="horizontal" name="new" action="{{ path('new_form_post') }}" method="POST">
+
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
         <div class="form-group">
-            <div class="col-md-6">
-                <label>Nombre del formulario</label>
-                <input type="text" name="nombre" id="nombre" class="form-control">
-            </div>  
-            <div class="col-md-6">
-                <label>Activo</label>
-                <select name="activo" id="activo" class="form-control">
-                    <option value="1">Si</option>
-                    <option value="0">No</option>
-                </select>
-            </div> 
+            <div style="margin: 30px"></div>
+            <input class="btn btn-primary" type="submit" value="Guardar cambios" />
         </div>
+    {{ form_end(form) }}
 
 
-        <div class="form-group">
-            <div class="col-md-12">
-                <div style="margin-top: 30px"></div>
-                <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-primary">
-            </div>  
-        </div>
-    </form>
+
+
 
 </div>
 
