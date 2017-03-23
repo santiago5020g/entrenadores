@@ -576,7 +576,7 @@ class SmbdEtlExtract implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array($this->cargo);
+        return array('ROLE_'.$this->cargo);
     }
 
 public function eraseCredentials()

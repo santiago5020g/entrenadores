@@ -130,7 +130,7 @@
                     </ul>
                   </li>
 
-        {% block body %}{% endblock %}
+       
 
                   <li class="footer">
                     <a href="#">View all tasks</a>
@@ -219,10 +219,10 @@
             <li class="active"><a href="#"><i class='fa fa-laptop'></i> <span>Control</span></a></li>
             <li><a href="#"><i class='fa fa-calendar'></i> <span>Planner</span></a></li>
             <li class="treeview">
-              <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class='fa fa-link'></i> <span>Formularios</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#">Link in level 2</a></li>
-                <li><a href="#">Link in level 2</a></li>
+                <li><a href="{{ path('index_form') }}">Ver formularios</a></li>
+                <li><a href="{{ path('new_form') }}">Crear formulario</a></li>
               </ul>
             </li>
           </ul><!-- /.sidebar-menu -->
@@ -248,6 +248,8 @@
         <section class="content">
 
           <!-- Your Page Content Here -->
+
+           {% block body %}{% endblock %}
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

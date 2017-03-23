@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ttrform
@@ -26,6 +27,7 @@ class Ttrform
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -33,6 +35,7 @@ class Ttrform
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Assert\NotBlank()
      */
     private $createdAt;
 
@@ -40,6 +43,7 @@ class Ttrform
      * @var \DateTime
      *
      * @ORM\Column(name="modified_at", type="datetime")
+     * @Assert\NotBlank()
      */
     private $modifiedAt;
 
@@ -47,6 +51,7 @@ class Ttrform
      * @var bool
      *
      * @ORM\Column(name="active", type="boolean")
+     * @Assert\NotBlank()
      */
     private $active;
 
