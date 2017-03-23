@@ -576,7 +576,7 @@ class SmbdEtlExtract implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array($this->cargo);
+        return array('ROLE_'.$this->cargo);
     }
 
 public function eraseCredentials()
@@ -606,4 +606,38 @@ public function eraseCredentials()
 
 
 
+
+    /**
+     * Add ttrform
+     *
+     * @param \AppBundle\Entity\Ttrform $ttrform
+     *
+     * @return SmbdEtlExtract
+     */
+    public function addTtrform(\AppBundle\Entity\Ttrform $ttrform)
+    {
+        $this->ttrforms[] = $ttrform;
+
+        return $this;
+    }
+
+    /**
+     * Remove ttrform
+     *
+     * @param \AppBundle\Entity\Ttrform $ttrform
+     */
+    public function removeTtrform(\AppBundle\Entity\Ttrform $ttrform)
+    {
+        $this->ttrforms->removeElement($ttrform);
+    }
+
+    /**
+     * Get ttrforms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTtrforms()
+    {
+        return $this->ttrforms;
+    }
 }

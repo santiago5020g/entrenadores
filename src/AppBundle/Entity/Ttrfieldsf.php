@@ -61,6 +61,19 @@ class Ttrfieldsf
 
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="Valuesf", mappedBy="ttrfieldsf")
+     */
+    private $valuesfs;
+    
+    public function __construct()
+    {
+        $this->valuesfs = new ArrayCollection();
+    }
+
+
+
+
 
 
     /**
@@ -191,5 +204,39 @@ class Ttrfieldsf
     public function getConfigfield()
     {
         return $this->configfield;
+    }
+
+    /**
+     * Add valuesf
+     *
+     * @param \AppBundle\Entity\Valuesf $valuesf
+     *
+     * @return Ttrfieldsf
+     */
+    public function addValuesf(\AppBundle\Entity\Valuesf $valuesf)
+    {
+        $this->valuesfs[] = $valuesf;
+
+        return $this;
+    }
+
+    /**
+     * Remove valuesf
+     *
+     * @param \AppBundle\Entity\Valuesf $valuesf
+     */
+    public function removeValuesf(\AppBundle\Entity\Valuesf $valuesf)
+    {
+        $this->valuesfs->removeElement($valuesf);
+    }
+
+    /**
+     * Get valuesfs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getValuesfs()
+    {
+        return $this->valuesfs;
     }
 }

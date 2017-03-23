@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ttrform
@@ -26,6 +27,7 @@ class Ttrform
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -33,6 +35,7 @@ class Ttrform
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Assert\NotBlank()
      */
     private $createdAt;
 
@@ -40,6 +43,7 @@ class Ttrform
      * @var \DateTime
      *
      * @ORM\Column(name="modified_at", type="datetime")
+     * @Assert\NotBlank()
      */
     private $modifiedAt;
 
@@ -47,6 +51,7 @@ class Ttrform
      * @var bool
      *
      * @ORM\Column(name="active", type="boolean")
+     * @Assert\NotBlank()
      */
     private $active;
 
@@ -195,6 +200,8 @@ class Ttrform
     {
         $this->cargos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ttrfieldsf = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->modifiedAt = new \DateTime();
     }
 
     /**
@@ -232,4 +239,62 @@ class Ttrform
     }
 
 
+
+    /**
+     * Add ttrfieldsf
+     *
+     * @param \AppBundle\Entity\Ttrfieldsf $ttrfieldsf
+     *
+     * @return Ttrform
+     */
+    public function addTtrfieldsf(\AppBundle\Entity\Ttrfieldsf $ttrfieldsf)
+    {
+        $this->ttrfieldsf[] = $ttrfieldsf;
+
+        return $this;
+    }
+
+    /**
+     * Remove ttrfieldsf
+     *
+     * @param \AppBundle\Entity\Ttrfieldsf $ttrfieldsf
+     */
+    public function removeTtrfieldsf(\AppBundle\Entity\Ttrfieldsf $ttrfieldsf)
+    {
+        $this->ttrfieldsf->removeElement($ttrfieldsf);
+    }
+
+    /**
+     * Get ttrfieldsf
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTtrfieldsf()
+    {
+        return $this->ttrfieldsf;
+    }
+
+    /**
+     * Set smbdEtlExtract
+     *
+     * @param \AppBundle\Entity\SmbdEtlExtract $smbdEtlExtract
+     *
+     * @return Ttrform
+     */
+    public function setSmbdEtlExtract(\AppBundle\Entity\SmbdEtlExtract $smbdEtlExtract)
+    {
+        $this->smbdEtlExtract = $smbdEtlExtract;
+
+        return $this;
+    }
+
+    /**
+     * Get smbdEtlExtract
+     *
+     * @return \AppBundle\Entity\SmbdEtlExtract
+     */
+    public function getSmbdEtlExtract()
+    {
+        return $this->smbdEtlExtract;
+    }
 }

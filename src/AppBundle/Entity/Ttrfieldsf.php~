@@ -61,6 +61,19 @@ class Ttrfieldsf
 
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="Valuesf", mappedBy="ttrfieldsf")
+     */
+    private $valuesfs;
+    
+    public function __construct()
+    {
+        $this->valuesfs = new ArrayCollection();
+    }
+
+
+
+
 
 
     /**
