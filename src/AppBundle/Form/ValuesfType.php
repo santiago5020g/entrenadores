@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Form\Type;
+namespace AppBundle\Form;
 
 use AppBundle\Entity\Valuesf;
 use Symfony\Component\Form\AbstractType;
@@ -12,7 +12,7 @@ class ValuesfType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('description', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'valor del campo'))
+        ->add('description', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'Valores del campo separados por comas: Ejemplo Colombia,Chile,Argentina'));
     }
 
     public function configureOptions(OptionsResolver $resolver)

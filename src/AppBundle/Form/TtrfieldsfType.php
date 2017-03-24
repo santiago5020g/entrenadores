@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class TtrfieldsfType extends AbstractType
 {
@@ -24,12 +25,22 @@ class TtrfieldsfType extends AbstractType
             ),
         ))
         ->add('active', ChoiceType::class, array( 
-            'attr' => array('class' => 'form-control'),
+            'attr' => array('class' => 'form-control','style'=>'margin-bottom:30px;'),
             'label'=>'El estado del campo es...',
             'choices'  => array(
                 'Activo' => 1,
                 'Inactivo' => 0,
             ),
+        ));
+
+
+
+        //agregar el formulario ValuesfType que significa los valores del campo
+        $builder->add('valuesfs', CollectionType::class, array(
+            'label'=>'VALORES DEL CAMPO',
+            'attr'=>array('style'=>'margin-top:20px;'),
+            'entry_type' => ValuesfType::class,
+
         ));
 
 

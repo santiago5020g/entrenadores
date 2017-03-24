@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Ttrform;
 use AppBundle\Entity\Ttrfieldsf;
+use AppBundle\Entity\Valuesf;
 use AppBundle\Form\TtrformType;
 
 /**
@@ -58,8 +59,11 @@ class TtrformController extends Controller
 
         $ttrform = new Ttrform();
         $ttrfieldsf = new Ttrfieldsf();
-        //cosa rara de symfony, es para crear el otro formulario incrustado
+        $valuesf = new Valuesf();
+        //cosa rara de symfony, es para crear el otro formulario incrustado fieldstype
         $ttrform->getTtrfieldsf()->add($ttrfieldsf);
+        //cosa rara de symfony, es para crear el otro formulario incrustado valuesf dentro fieldstype 
+        $ttrfieldsf->getValuesfs()->add($valuesf);
 
 
         //importar el formulario que esta en appbundle/form/ttrformtype
@@ -81,9 +85,12 @@ class TtrformController extends Controller
             $ttrform->setSmbdEtlExtract($smbdEtlExtract);
             //Insertar el objeto ttrform en ttrfield para que guarde el id
             $ttrfieldsf->setTtrform($ttrform);
+            //Insertar el objeto ttrfieldsf en valuesf para que guarde el id
+            $valuesf->setTtrfieldsf($ttrfieldsf);
             //con estas dos lineas se guarda el formulario en la bd
             $em->persist($ttrform);
             $em->persist($ttrfieldsf);
+            $em->persist($valuesf);
             $em->flush();
 
 

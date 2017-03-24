@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use AppBundle\Form\TtrfieldsfType;
 
 class TtrformType extends AbstractType
 {
@@ -51,6 +50,7 @@ class TtrformType extends AbstractType
         ));
         */
 
+        //agregar el formulario TtrfieldsfTupe
         $builder->add('ttrfieldsf', CollectionType::class, array(
             'label'=>'CAMPOS DEL FORMULARIO',
             'attr'=>array('style'=>'margin-top:20px'),
