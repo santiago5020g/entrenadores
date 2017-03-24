@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Ttrform;
+use AppBundle\Entity\Ttrfieldsf;
+use AppBundle\Form\TtrformType;
 
 /**
  * Ttrform controller.
@@ -55,8 +57,13 @@ class TtrformController extends Controller
         }
 
         $ttrform = new Ttrform();
+        $ttrfieldsf = new Ttrfieldsf();
+        //cosa rara de symfony, es para crear el otro formulario incrustado
+        $ttrform->getTtrfieldsf()->add($ttrfieldsf);
+
+
         //importar el formulario que esta en appbundle/form/ttrformtype
-        $form = $this->createForm('AppBundle\Form\TtrformType', $ttrform);
+        $form = $this->createForm(TtrformType::class, $ttrform);
         //si se envia el formulario se capturan los datos
         $form->handleRequest($request);
 
@@ -64,6 +71,7 @@ class TtrformController extends Controller
         //si el formulario es enviado y es valido
         if ($form->isSubmitted() && $form->isValid()) 
         {
+            
             $em = $this->getDoctrine()->getManager();
             //seleccionar cedula del usuario logueado
             $cedula = $this->get('security.token_storage')->getToken()->getUser();
@@ -71,9 +79,13 @@ class TtrformController extends Controller
             $smbdEtlExtract = $em->getRepository('AppBundle:SmbdEtlExtract')->find($cedula);
             //insertar el objeto smbdEtlExtract en ttrform
             $ttrform->setSmbdEtlExtract($smbdEtlExtract);
+            //Insertar el objeto ttrform en ttrfield para que guarde el id
+            $ttrfieldsf->setTtrform($ttrform);
             //con estas dos lineas se guarda el formulario en la bd
             $em->persist($ttrform);
-            $em->flush($ttrform);
+            $em->persist($ttrfieldsf);
+            $em->flush();
+
 
 
             //si ya esta aqui es porque los datos se insertaron correctamente
@@ -81,6 +93,9 @@ class TtrformController extends Controller
             'mensaje',
             'Usuario creado correctamente'
             );
+            
+
+
 
             return $this->redirectToRoute('index_form');
 

@@ -3,12 +3,15 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use AppBundle\Entity\Ttrform;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use AppBundle\Form\TtrfieldsfType;
 
 class TtrformType extends AbstractType
 {
@@ -29,7 +32,7 @@ class TtrformType extends AbstractType
             ),
         ))
         ->add('cargos', EntityType::class, array(
-        'attr' => array('class' => 'form-control'),
+        'attr' => array('class' => 'form-control','style'=>'margin-bottom:35px'),
         'label'=>'Los cargos que podran ver este formulario',
         // query choices from this entity
         'class' => 'AppBundle:Cargo',
@@ -38,6 +41,44 @@ class TtrformType extends AbstractType
         'multiple'=>true,
         // use the User.username property as the visible option string
         'choice_label' => 'name',
+        ));
+
+
+        /*
+        $builder->add('ttrfieldsf', TtrfieldsfType::class, array(
+            'label'=>'CAMPOS DEL FORMULARIO',
+            'data_class' => null,
+        ));
+        */
+
+        $builder->add('ttrfieldsf', CollectionType::class, array(
+            'label'=>'CAMPOS DEL FORMULARIO',
+            'attr'=>array('style'=>'margin-top:20px'),
+            'entry_type' => TtrfieldsfType::class,
+
+        ));
+    
+
+
+    /*
+        //entidad TtrFieldsType
+        $builder->add('ttrfieldsf', CollectionType::class, array(
+            'label'=>'CAMPOS DEL FORMULARIO',
+            'attr'=>array('style'=>'margin-top:20px'),
+            'entry_type' => TtrfieldsfType::class,
+
+        ));
+*/
+
+
+    }
+
+
+
+        public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Ttrform::class,
         ));
     }
 

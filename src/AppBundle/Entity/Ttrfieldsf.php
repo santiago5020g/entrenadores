@@ -47,7 +47,7 @@ class Ttrfieldsf
 
     /**
      * @ORM\ManyToOne(targetEntity="Ttrform", inversedBy="ttrfieldsf")
-     * @ORM\JoinColumn(name="ttrfield_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="ttrform_id", referencedColumnName="id", nullable=false)
      */
     private $ttrform;
 
@@ -74,6 +74,11 @@ class Ttrfieldsf
 
 
 
+
+ public function addTag(Tag $tag)
+    {
+        $this->tags->add($tag);
+    }
 
 
     /**
