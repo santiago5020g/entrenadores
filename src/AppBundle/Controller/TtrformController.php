@@ -87,7 +87,7 @@ class TtrformController extends Controller
             $ttrfieldsf->setTtrform($ttrform);
             //Insertar el objeto ttrfieldsf en valuesf para que guarde el id
             $valuesf->setTtrfieldsf($ttrfieldsf);
-            //con estas dos lineas se guarda el formulario en la bd
+            //Proceso para guardar. El flush confirma los cambios (persist) para guardar en la bd
             $em->persist($ttrform);
             $em->persist($ttrfieldsf);
             $em->persist($valuesf);

@@ -1,12 +1,14 @@
+//permite agregar campos al formulario
+
 var $collectionHolder;
 
 // setup an "add a tag" link
-var $addTagLink = $('<a href="#" class="add_tag_link">Add a tag</a>');
+var $addTagLink = $('<a href="#" style ="margin-top:30px" class="btn btn-success">Agregar campo al formulario</a>');
 var $newLinkLi = $('<li></li>').append($addTagLink);
 
 jQuery(document).ready(function() {
     // Get the ul that holds the collection of tags
-    $collectionHolder = $('ul.tags');
+    $collectionHolder = $('ul.ttrfieldsf');
 
     // add the "add a tag" anchor and li to the tags ul
     $collectionHolder.append($newLinkLi);

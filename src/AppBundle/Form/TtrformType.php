@@ -55,20 +55,11 @@ class TtrformType extends AbstractType
             'label'=>'CAMPOS DEL FORMULARIO',
             'attr'=>array('style'=>'margin-top:20px'),
             'entry_type' => TtrfieldsfType::class,
+            'allow_add'    => true,
+            'by_reference' => false,
 
         ));
-    
 
-
-    /*
-        //entidad TtrFieldsType
-        $builder->add('ttrfieldsf', CollectionType::class, array(
-            'label'=>'CAMPOS DEL FORMULARIO',
-            'attr'=>array('style'=>'margin-top:20px'),
-            'entry_type' => TtrfieldsfType::class,
-
-        ));
-*/
 
 
     }

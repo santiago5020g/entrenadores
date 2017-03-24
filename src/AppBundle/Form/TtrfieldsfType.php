@@ -40,6 +40,8 @@ class TtrfieldsfType extends AbstractType
             'label'=>'VALORES DEL CAMPO',
             'attr'=>array('style'=>'margin-top:20px;'),
             'entry_type' => ValuesfType::class,
+            'allow_add'    => true,
+            
 
         ));
 

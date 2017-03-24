@@ -15,14 +15,26 @@
 
 
 
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_start(form) }}
+        
         <div class="form-group">
+            {{ form_row(form.name) }}
+            {{ form_row(form.active) }}
+            {{ form_row(form.cargos) }}
+        </div>
+        
+
+
+        <div class="form-group">
+            <div style="margin: 30px"></div>
+                <ul class="ttrfieldsf" data-prototype="{{ form_widget(form.ttrfieldsf.vars.prototype)|e('html_attr') }}">
+                    {{ form_row(form.ttrfieldsf) }}
+                </ul> 
             <div style="margin: 30px"></div>
             <input class="btn btn-primary" type="submit" value="Guardar cambios" />
         </div>
-    {{ form_end(form) }}
+
+        {{ form_end(form)  }}
 
 
 
@@ -35,5 +47,5 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script type="text/javascript" src="{{ asset('js/agregar_campos.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/agregar_campos.js?v=1') }}"></script>
 {% endblock %}
